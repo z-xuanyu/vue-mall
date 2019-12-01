@@ -1,27 +1,34 @@
 <template>
   <div class="detail">
     <!-- 顶部导航 -->
-      <van-nav-bar class="bgcolor" title="商品详细" fixed :style="{opacity:scrollTop}" left-arrow @click-left="back" />
+    <van-nav-bar
+      class="bgcolor"
+      title="商品详细"
+      fixed
+      :style="{opacity:scrollTop}"
+      left-arrow
+      @click-left="back"
+    />
     <!-- 导航返回图片 -->
     <div class="left-icon" @click="back">
-        <van-icon name="arrow-left" size=".48rem" color="#fff" />
+      <van-icon name="arrow-left" size=".48rem" color="#fff" />
     </div>
     <!-- 详细页面轮播 -->
     <van-swipe :autoplay="3000" indicator-color="white" @change="onChange">
-      <van-swipe-item v-for="(item,index) in 5" :key="index" @click="onPrivew">
+      <van-swipe-item v-for="(item,index) in banner" :key="index" @click="onPrivew">
         <img
           class="swiper-pic"
-          src="http://t00img.yangkeduo.com/goods/images/images/2019-10-05/a886e0b1-f10d-46bd-bc5c-9ca19f9cbc09.jpg"
+          :src="item"
         />
       </van-swipe-item>
-      <div class="custom-indicator" slot="indicator">{{ current + 1 }}/5</div>
+      <div class="custom-indicator" slot="indicator">{{ current + 1 }}/{{banner.length}}</div>
     </van-swipe>
     <!-- 轮播图预览图 -->
-    <van-image-preview v-model="previewShow" :images="previewImages" @change="onChangePreview">
-      <template v-slot:index>{{ current + 1 }}/{{previewImages.length}}</template>
+    <van-image-preview v-model="previewShow" :images="banner" @change="onChangePreview">
+      <template v-slot:index>{{ current + 1 }}/{{banner.length}}</template>
     </van-image-preview>
     <!-- 商品标题，价格，收藏，分享 -->
-    <goods-info></goods-info>
+    <goods-info :goodsDesc="goodsDesc" :marketPrice="marketPrice" :maxGroupPrice="maxGroupPrice" ></goods-info>
     <!-- 商品优惠卷，促销 -->
     <goods-coupon></goods-coupon>
     <!-- 商品选购 -->
@@ -29,7 +36,7 @@
     <!-- 商品评价 -->
     <goods-comment></goods-comment>
     <!-- 商品详情 -->
-    <goods-pic></goods-pic>
+    <goods-pic :detailImg="detailImg"></goods-pic>
     <!-- 购买底部导航 -->
     <van-goods-action safe-area-inset-bottom>
       <van-goods-action-icon icon="chat-o" text="客服" />
@@ -62,15 +69,20 @@ export default {
   data() {
     return {
       current: 0,
-      scrollTop:0,
+      scrollTop: 0,
       previewShow: false,
       isShouSku: true, //商品的sku显隐
-      previewImages: [
-        "http://t00img.yangkeduo.com/goods/images/images/2019-10-05/a886e0b1-f10d-46bd-bc5c-9ca19f9cbc09.jpg",
-        "http://t00img.yangkeduo.com/goods/images/images/2019-10-05/a886e0b1-f10d-46bd-bc5c-9ca19f9cbc09.jpg",
-        "http://t00img.yangkeduo.com/goods/images/images/2019-10-05/a886e0b1-f10d-46bd-bc5c-9ca19f9cbc09.jpg"
-      ]
+      banner: [], //轮播图
+      detailImg: [], //详情内容图片
+      goodsDesc: "", //商品的信息
+      marketPrice: "", //商品原价
+      maxGroupPrice: "", //商品现价
     };
+  },
+  created() {
+    // 请求获取数据 
+    this.getDetailData();
+    console.log(this.goodsDese)
   },
   mounted() {
     window.addEventListener("scroll", this.scroll);
@@ -81,15 +93,14 @@ export default {
   methods: {
     // 顶部导航显隐
     scroll() {
-      const top =
-        document.documentElement.scrollTop || document.body.scrollTop;
-        if(top > 60){
-          let opacity = top/200;
-          opacity = opacity > 1?1:opacity
-          this.scrollTop = opacity
-        }else{
-          this.scrollTop = 0;
-        }
+      const top = document.documentElement.scrollTop || document.body.scrollTop;
+      if (top > 60) {
+        let opacity = top / 200;
+        opacity = opacity > 1 ? 1 : opacity;
+        this.scrollTop = opacity;
+      } else {
+        this.scrollTop = 0;
+      }
     },
     // 返回上一页
     back() {
@@ -119,6 +130,18 @@ export default {
     onBuyClicked() {
       this.$refs.sku._data.showSku = true;
     },
+    // 请求获取数据
+    getDetailData() {
+      const goodsId = this.$route.query.goods_id;
+      this.$api.detailData.data(goodsId).then(({ data }) => {
+        this.banner = data.item.banner; //banner 轮播图
+        this.detailImg = data.item.detail; //详情内容图片
+        this.goodsDesc = data.item.goodsDesc; // 商品的标题
+        this.marketPrice = data.item.marketPrice  //商品原价
+        this.maxGroupPrice = data.item.maxGroupPrice  //商品现价
+        console.log(data)
+      });
+    }
   }
 };
 </script>
@@ -126,11 +149,12 @@ export default {
 <style lang="scss" scoped>
 .detail {
   padding-bottom: 50px;
-  .van-nav-bar__title,.van-icon{
+  .van-nav-bar__title,
+  .van-icon {
     color: #fff;
   }
-  .left-icon{
-    background-color: rgba($color: #000000, $alpha: .6);
+  .left-icon {
+    background-color: rgba($color: #000000, $alpha: 0.6);
     width: 40px;
     height: 40px;
     border-radius: 50%;

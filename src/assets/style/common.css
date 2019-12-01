@@ -2,6 +2,10 @@
 .bgcolor{
     background: linear-gradient(to bottom, #f06c7a 0%, #f06c7a 100%);
 }
+/* 背景颜色 */
+.bg-white{
+    background-color: #fff;
+}
 /* 字体 */
 .icon-font-22{
     font-size: 22px;
@@ -51,5 +55,8 @@
 }
 .m-t-5{
     margin-top: 5px;
+}
+.m-b-5{
+    margin-bottom: 5px;
 }
 /* vant 修改 */

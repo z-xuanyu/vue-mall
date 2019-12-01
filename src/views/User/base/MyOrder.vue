@@ -2,7 +2,7 @@
   <!-- 我的订单 -->
   <div class="my-order">
     <div class="order-wrapper">
-      <van-cell value="查看更多" is-link>
+      <van-cell value="查看更多" is-link @click="onMore">
         <template slot="title">
           <span class="custom-title">我的订单</span>
         </template>
@@ -28,6 +28,12 @@ export default {
        {name:"评价",icon:"iconfont icon-pingjia",info:"1"},
        {name:"退款/售后",icon:"iconfont icon-icon1",info:""}
      ]
+    }
+  },
+  methods: {
+    // 路由跳转
+    onMore() {
+      this.$router.push("/order")
     }
   },
 };

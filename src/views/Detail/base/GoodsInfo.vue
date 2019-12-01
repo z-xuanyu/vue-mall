@@ -4,12 +4,12 @@
       <van-col span="8">
         <div class="price">
           <em>￥</em>
-          <span class="price-1">49</span>
+          <span class="price-1">{{maxGroupPrice}}</span>
           <van-tag plain type="success" round>新品</van-tag>
         </div>
         <div class="original-price">
           <em>价格</em>
-          <s>￥199.00</s>
+          <s>￥{{marketPrice}}.00</s>
         </div>
       </van-col>
       <van-col span="4" class="text-right" @click="onLike">
@@ -18,7 +18,7 @@
       </van-col>
     </van-row>
     <!-- 商品价格 -->
-    <div class="goods-title">无线蓝牙耳机双耳单耳塞迷你入耳式运动vivo苹果oppo安卓手机通用</div>
+    <div class="goods-title">{{goodsDesc}}</div>
     <!-- 公告提示 -->
     <div class="tips">此商品将于2019-06-28,10点结束闪购特卖，时尚美饰联合专场</div>
     <!--快递，月销量，发货地址  -->
@@ -38,6 +38,23 @@
 
 <script>
 export default {
+  props:{
+    // 商品原价
+    marketPrice:{
+      type:String,
+      default:"999"
+    },
+    // 商品现价
+    maxGroupPrice:{
+      type:String,
+      default:"88"
+    },
+    // 商品标题
+    goodsDesc:{
+      type:String,
+      default:""
+    }
+  },
   methods: {
     onLike() {
       this.$toast.success("收藏成功");
