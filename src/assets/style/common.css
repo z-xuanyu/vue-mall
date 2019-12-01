@@ -1,0 +1,55 @@
+/* 网站主体颜色 */
+.bgcolor{
+    background: linear-gradient(to bottom, #f06c7a 0%, #f06c7a 100%);
+}
+/* 字体 */
+.icon-font-22{
+    font-size: 22px;
+}
+.icon-font-20 {
+    font-size: 20px;
+}
+.icon-font-18{
+    font-size: 18px;
+}
+
+/* 文本 */
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-bold{
+    font-weight: bold;
+}
+.text-middle {
+    vertical-align: middle;
+}
+/* padding  内边距*/
+.p-l-5{
+    padding-left: 5px;
+}
+.p-r-5{
+    padding-right: 5px;
+}
+.p-t-b-5{
+    padding: 5px 0;
+}
+/* margin  外边距*/
+.m-r-5{
+    margin-right: 5px;
+}
+.m-r-10 {
+    margin-right: 10px;
+}
+.m-l-5{
+    margin-left: 5px;
+}
+.m-t-5{
+    margin-top: 5px;
+}
+/* vant 修改 */

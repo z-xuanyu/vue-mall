@@ -1,29 +1,84 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
 Vue.use(VueRouter)
-
+// 路由懒加载
+const Home = ()=> import("../views/Home/Home.vue")  //首页
+const News = ()=> import("../views/News/News.vue")  //信息页面
+const Category = ()=> import("../views/Category/Category.vue")  //分类页面
+const Search = ()=> import("../views/Search/Search.vue")  //搜索页面
+const Cart = ()=> import("../views/Cart/Cart.vue")    //购物车
+const SubmitOrder = ()=> import("../views/Cart/base/SubmitOrder.vue") //购物车提交订单
+const User = ()=> import("../views/User/User.vue")    //用户页面
+const Login = ()=> import("../views/Login/Login.vue") //登录页面
+const Set = ()=> import("../views/Set/Set.vue")  //设置页面
+const Order = ()=> import("../views/Order/Order.vue")  //订单中心
+const Detail = ()=> import("../views/Detail/Detail.vue")  //商品详细页
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path:"/news",
+    name:"news",
+    component:News
+  },
+  {
+    path: "/category",
+    name: "category",
+    component:Category
+  },
+  {
+    path:"/search",
+    name:"search",
+    component:Search
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component:Cart
+  },
+  {
+    path:"/cart/submit-order",
+    name:"submit-order",
+    component:SubmitOrder
+  },
+  {
+    path: "/user",
+    name: "user",
+    component:User
+  },
+  {
+    path:"/set",
+    name:"set",
+    component:Set
+  },
+  {
+    path:"/order",
+    name:"order",
+    component:Order
+  },
+  {
+    path:"/login",
+    name:"login",
+    component:Login
+  },
+  {
+    path:"/detail",
+    name:"detail",
+    component:Detail
   }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+    
+  }
+});
 
 export default router
