@@ -59,4 +59,11 @@
 .m-b-5{
     margin-bottom: 5px;
 }
-/* vant 修改 */
+/* 圆角 */
+.b-r-5{
+    border-radius: 5px;
+}
+.b-r-10{
+    border-radius: 10px;
+    overflow: hidden;
+}
