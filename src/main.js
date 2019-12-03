@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import flexible from "lib-flexible";
 import api from "./api/index";
-import  Cookies from "js-cookie"
+import Cookies from "js-cookie";
 Vue.prototype.$api = api;
 Vue.prototype.$Cookies = Cookies;
 Vue.use(flexible);
@@ -18,6 +18,8 @@ import {
   Stepper,
   Search,
   Row,
+  Radio,
+  RadioGroup,
   Col,
   Button,
   Field,
@@ -33,6 +35,8 @@ import {
   ContactEdit,
   Checkbox,
   Panel,
+  PasswordInput,
+  NumberKeyboard,
   Swipe,
   SwipeItem,
   SwipeCell,
@@ -64,6 +68,8 @@ Vue.use(Lazyload)
   .use(AddressList)
   .use(Panel)
   .use(Popup)
+  .use(PasswordInput)
+  .use(NumberKeyboard)
   .use(PullRefresh)
   .use(CouponCell)
   .use(Card)
@@ -96,6 +102,8 @@ Vue.use(Lazyload)
   .use(Stepper)
   .use(Search)
   .use(Row)
+  .use(Radio)
+  .use(RadioGroup)
   .use(Col)
   .use(Button)
   .use(Field)

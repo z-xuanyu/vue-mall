@@ -8,6 +8,8 @@ const Category = ()=> import("../views/Category/Category.vue")  //分类页面
 const Search = ()=> import("../views/Search/Search.vue")  //搜索页面
 const Cart = ()=> import("../views/Cart/Cart.vue")    //购物车
 const SubmitOrder = ()=> import("../views/Cart/base/SubmitOrder.vue") //购物车提交订单
+const OrderPay = () => import("../views/Cart/base/OrderPay.vue")  //支付订单
+const PaySuccess = ()=> import("../views/Cart/base/PaySuccess.vue") //支付成功
 const User = ()=> import("../views/User/User.vue")    //用户页面
 const Login = ()=> import("../views/Login/Login.vue") //登录页面
 const Set = ()=> import("../views/Set/Set.vue")  //设置页面
@@ -43,6 +45,16 @@ const routes = [
     path:"/cart/submit-order",
     name:"submit-order",
     component:SubmitOrder
+  },
+  {
+    path:"/order-pay",
+    name:"order-pay",
+    component:OrderPay
+  },
+  {
+    path:"/pay-success",
+    name:"pay-success",
+    component:PaySuccess
   },
   {
     path: "/user",

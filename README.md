@@ -1,21 +1,27 @@
-# mall
+---
 
-## Project setup
+---
+
+# vue + vant ui 实战mall移动商城
+
+
+
+### 项目启动安装所有依赖包
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 项目运行
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 项目打包上线
 ```
 npm run build
 ```
 
-### Run your tests
+### 项目运行在测试环境
 ```
 npm run test
 ```
@@ -25,5 +31,10 @@ npm run test
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+------
+
+
+
+### 部分的演示图：
+
+![首页](https://wxt.sinaimg.cn/large/007XivJ0gy1g9imiuipjej30d10lgdn9.jpg)

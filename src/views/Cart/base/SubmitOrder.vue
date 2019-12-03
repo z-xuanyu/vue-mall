@@ -73,7 +73,7 @@ export default {
     },
     // 提交支付订单
     onSubmitPay(){
-
+      this.$router.push("/order-pay")
     },
     // 点击联系人卡片
     onContactCard(){
