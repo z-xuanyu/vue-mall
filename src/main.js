@@ -11,6 +11,7 @@ Vue.use(flexible);
 import {
   AddressEdit,
   AddressList,
+  Area,
   Lazyload,
   Toast,
   Dialog,
@@ -66,6 +67,7 @@ Vue.use(Lazyload)
   .use(CouponList)
   .use(AddressEdit)
   .use(AddressList)
+  .use(Area)
   .use(Panel)
   .use(Popup)
   .use(PasswordInput)

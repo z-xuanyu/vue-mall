@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 // 路由懒加载
+const error = ()=> import("../views/404/404.vue")
 const Home = ()=> import("../views/Home/Home.vue")  //首页
 const News = ()=> import("../views/News/News.vue")  //信息页面
 const Category = ()=> import("../views/Category/Category.vue")  //分类页面
@@ -15,6 +16,9 @@ const Login = ()=> import("../views/Login/Login.vue") //登录页面
 const Set = ()=> import("../views/Set/Set.vue")  //设置页面
 const Order = ()=> import("../views/Order/Order.vue")  //订单中心
 const Detail = ()=> import("../views/Detail/Detail.vue")  //商品详细页
+const Address = ()=> import ("../views/Address/Address.vue")  //收货地址
+const AddressAdd = ()=> import ("../views/Address/AddressAdd.vue") // 添加地址
+const AddressEdit = ()=> import ("../views/Address/AddressEdit.vue") //编辑地址
 const routes = [
   {
     path: "/",
@@ -22,64 +26,88 @@ const routes = [
     component: Home
   },
   {
-    path:"/news",
-    name:"news",
-    component:News
+    path: "/news",
+    name: "news",
+    component: News
   },
   {
     path: "/category",
     name: "category",
-    component:Category
+    component: Category
   },
   {
-    path:"/search",
-    name:"search",
-    component:Search
+    path: "/search",
+    name: "search",
+    component: Search
   },
   {
     path: "/cart",
     name: "cart",
-    component:Cart
+    component: Cart
   },
   {
-    path:"/cart/submit-order",
-    name:"submit-order",
-    component:SubmitOrder
+    path: "/cart/submit-order",
+    name: "submit-order",
+    component: SubmitOrder
   },
   {
-    path:"/order-pay",
-    name:"order-pay",
-    component:OrderPay
+    path: "/order-pay",
+    name: "order-pay",
+    component: OrderPay
   },
   {
-    path:"/pay-success",
-    name:"pay-success",
-    component:PaySuccess
+    path: "/pay-success",
+    name: "pay-success",
+    component: PaySuccess
   },
   {
     path: "/user",
     name: "user",
-    component:User
+    component: User
   },
   {
-    path:"/set",
-    name:"set",
-    component:Set
+    path: "/set",
+    name: "set",
+    component: Set
   },
   {
-    path:"/order",
-    name:"order",
-    component:Order
+    path: "/order",
+    name: "order",
+    component: Order
   },
   {
-    path:"/login",
-    name:"login",
-    component:Login
+    path: "/login",
+    name: "login",
+    component: Login
   },
   {
-    path:"/detail",
-    name:"detail",
-    component:Detail
+    path: "/detail",
+    name: "detail",
+    component: Detail
+  },
+  {
+    path: "/address",
+    name: "address",
+    component: Address
+  },
+  {
+    path: "/address-add",
+    name: "addres-add",
+    component: AddressAdd
+  },
+  {
+    path: "/address-edit",
+    name: "address-edit",
+    component: AddressEdit
+  },
+  {
+    path:"/404",
+    name:"404",
+    component:error
+  },
+  {
+    path: "*",
+    redirect: "/404"
   }
 ];
 

@@ -4,8 +4,10 @@
     <van-nav-bar title="支付订单" left-arrow @click-left="onBack" />
     <!-- 支付金额 -->
     <van-row type="flex" justify="center">
-        <van-col>支付金额</van-col>
-        <van-col>￥334.9</van-col>
+        <van-col>
+          <div class="price">￥2339</div>
+          <div class="title">支付金额</div>
+        </van-col>
     </van-row>
     <!-- 选择支付方式 -->
     <div class="pay-way">
@@ -127,6 +129,19 @@ export default {
     bottom: 0;
     right: 0;
     left: 0;
+    .van-icon-arrow-left{
+      color: #000;
+    }
+    .price{
+      color: rgb(250, 67, 106);
+      font-size: 24px;
+      padding-top: 20px;
+    }
+    .title{
+      margin-top: 5px;
+      padding-left: 8px;
+      text-align: center;
+    }
     .pay-way{
         padding: 20px;
         .pay-btn{

@@ -5,7 +5,7 @@
       <van-nav-bar title="提交订单" left-arrow @click-left="onClickLeft" />
     </van-sticky>
     <!-- 收货地址 -->
-    <van-contact-card @click="onContactCard" :type="type" :name="addressList.name" :tel="addressList.tel" :add-text="addressList.address" />
+    <van-contact-card @click="onContactCard" :type="type" :name="editAddressInfo.name" :tel="editAddressInfo.tel" :add-text="editAddressInfo.address" />
     <!-- 商品信息 -->
     <van-panel title="商品信息">
       <div>
@@ -46,25 +46,25 @@
     </van-cell-group>
     <!-- 确认支付 -->
     <van-submit-bar safe-area-inset-bottom :price="3050" button-text="提交订单" @submit="onSubmitPay" />
-    <!-- 编辑/添加收货地址 -->
-   <address-list ref="list"></address-list>
   </div>
 </template>
 
 <script>
 import GoodsCoupon from "./GoodsCoupon";
-import AddressList from "./AddressList";
-import { mapState} from "vuex"
+import {mapState} from "vuex"
 export default {
   components: {
-    GoodsCoupon,
-    AddressList
+    GoodsCoupon
   },
   data() {
     return {
       type:"edit",
       message: "", //下单留言信息
     };
+  },
+  mounted(){
+    // 判断是否有地址
+    Object.keys(this.editAddressInfo).length?this.type = "edit":this.type = "add"
   },
   methods: {
     // 返回上一页
@@ -77,14 +77,11 @@ export default {
     },
     // 点击联系人卡片
     onContactCard(){
-      this.$refs.list.showList = true
+      this.$router.push("/address")
     }
   },
-  computed:{
-    ...mapState(["addressList"])
-  },
-  created() {
-    this.addressList.lenght?this.type = "edit":this.type = "add";
+  computed: {
+    ...mapState(["editAddressInfo"])
   },
 };
 </script>

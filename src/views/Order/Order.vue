@@ -13,7 +13,7 @@
       ellipsis
       swipeable
       lazy-render
-      :swipe-threshold="5"
+      :swipe-threshold="6"
     >
       <!-- 全部订单 -->
       <van-tab title="全部">
@@ -31,6 +31,9 @@
       </van-tab>
       <van-tab title="待评价">
          <order-card></order-card>
+      </van-tab>
+      <van-tab title="售后">
+         暂无售后订单
       </van-tab>
     </van-tabs>
   </div>
@@ -57,4 +60,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.my-order{
+  // 顶部导航左图标颜色
+  .van-icon-arrow-left {
+    color: #000;
+  }
+}
 </style>

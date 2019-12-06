@@ -42,42 +42,53 @@ export default {
       this.$router.push("/");
     },
     // 查看订单
-    CheckOrder(){
-        this.$router.push("/order")
+    CheckOrder() {
+      this.$toast.loading({
+        message: "加载中...",
+        forbidClick: true
+      });
+      setTimeout(()=>{
+        this.$toast.clear()
+        this.$router.push("/order");
+      },500)
+      
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.pay-success{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: #fff;
-    // 成功图标
-    .success-icon{
-        text-align: center;
-        margin-top: 50px;
-        span{
-            display: block;
-            color: #303133;
-            font-size: 19px;
-            margin-top: 5px;
-        }
+.pay-success {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #fff;
+  .van-icon-arrow-left {
+    color: #000;
+  }
+  // 成功图标
+  .success-icon {
+    text-align: center;
+    margin-top: 50px;
+    span {
+      display: block;
+      color: #303133;
+      font-size: 19px;
+      margin-top: 5px;
     }
-    //查看订单
-    .success-btn{
-        margin-top: 50px;
-        padding: 20px 40px;
-        .mt-10{
-            margin-top: 10px;
-        }
-        .border-r{
-            border-radius: 5px;
-        }
+  }
+  //查看订单
+  .success-btn {
+    margin-top: 50px;
+    padding: 20px 40px;
+    .mt-10 {
+      margin-top: 10px;
     }
+    .border-r {
+      border-radius: 5px;
+    }
+  }
 }
 </style>

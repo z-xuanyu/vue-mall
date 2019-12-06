@@ -3,7 +3,7 @@
     <van-panel
       title="订单号：T20191203"
       status="已完成"
-      class="m-b-5 b-r-10"
+      class="m-b-10 b-r-10"
       v-for="(item,index) in 2"
       :key="index"
     >

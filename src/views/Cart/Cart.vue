@@ -84,10 +84,10 @@ export default {
   },
   data() {
     return {
-      tipsTxt:"去登录",
-      allChecked: true,  //订单全选
+      tipsTxt: "去登录",
+      allChecked: true, //订单全选
       hisGoodsOrder: false, //是否有商品订单
-      isLoading: false,     //提交订单按钮提交loading状态
+      isLoading: false, //提交订单按钮提交loading状态
       goodsOrderList: [
         {
           isSelected: true,
@@ -126,7 +126,7 @@ export default {
   },
   created() {
     const TOKEN = this.$Cookies.get("TOKEN");
-    TOKEN ? this.hisGoodsOrder = true : this.tipsTxt = "去登录";
+    TOKEN ? (this.hisGoodsOrder = true) : (this.tipsTxt = "去登录");
   },
   methods: {
     // 提交订单跳转
@@ -202,6 +202,13 @@ export default {
       return this.goodsOrderList.reduce((pre, next) => {
         return next.isSelected ? pre + next.price * next.num * 100 : pre;
       }, 0);
+    }
+  },
+  watch: {
+    goodsOrderList(newValue) {
+      if (!newValue.length) {
+        this.tipsTxt = "去逛逛看";
+      }
     }
   }
 };
