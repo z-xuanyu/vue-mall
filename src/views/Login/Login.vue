@@ -15,7 +15,14 @@
     <div class="user-form" v-else>
       <van-field maxlength="11" clearable type="tel" v-model="phone" placeholder="请输入手机号码" />
       <van-field maxlength="6" v-model="sms" center clearable label="短信验证码" placeholder="请输入短信验证码">
-        <van-button slot="button" round size="mini" style="width:2rem" type="primary">发送验证码</van-button>
+        <van-button
+          slot="button"
+          round
+          size="mini"
+          style="width:2rem"
+          type="primary"
+          @click="VerifyCodeCountdown"
+        >{{validateBtn}}</van-button>
       </van-field>
     </div>
     <div class="login-btn">
@@ -64,10 +71,11 @@ export default {
     return {
       userName: "", //用户名
       password: "", //密码
-      phone:"", //手机号
-      sms:"",  //验证码
+      phone: "", //手机号
+      sms: "", //验证码
       isLoading: false, //登录loading
-      isPhoneLogin:false,  //是否为手机号码登录
+      isPhoneLogin: false, //是否为手机号码登录
+      validateBtn: "发送验证码"
     };
   },
   created() {
@@ -104,6 +112,23 @@ export default {
     // 切换手机号登录
     onPhoneLogin() {
       this.isPhoneLogin = !this.isPhoneLogin;
+    },
+    //验证码倒计时
+    VerifyCodeCountdown() {
+      this.$toast("发送成功");
+      //验证码倒计时
+      let time = 60;
+      let timer = setInterval(() => {
+        if (time == 0) {
+          clearInterval(timer);
+          this.validateBtn = "发送验证码";
+          this.disabled = false;
+        } else {
+          this.validateBtn = time + "秒后重试";
+          this.disabled = true;
+          time--;
+        }
+      }, 1000);
     }
   },
   computed: {
@@ -158,11 +183,11 @@ export default {
     .van-field {
       border-radius: 50px;
     }
-    .van-field__label{
+    .van-field__label {
       font-size: 12px;
       width: 70px;
     }
-    .van-field__control{
+    .van-field__control {
       font-size: 13px;
     }
   }

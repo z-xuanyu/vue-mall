@@ -8,19 +8,15 @@
       <!-- 轮播图 -->
       <div class="swiper-wrapper-w">
         <v-swiper></v-swiper>
-      </div>  
-      <!-- 公告通知 -->
-      <van-notice-bar
-        color="#f60"
-        text="轩钰实战vue + vant ui demo演示站。更多demo实战，请访问轩钰博客 www.zhouxuanyu.com/demo 轩钰QQ/微信：969718197"
-        left-icon="volume-o"
-      />
+      </div>
       <!-- icon - nav -->
       <icon-nav></icon-nav>
       <!-- 广告栏 -->
       <ad></ad>
       <!-- 秒杀 -->
       <v-spike></v-spike>
+      <!-- 热门限购 -->
+      <popular></popular>
       <!-- 商品列表 -->
       <like-goods :isTitle="false"></like-goods>
     </van-pull-refresh>
@@ -37,18 +33,18 @@ import vSwiper from "./base/Swiper";
 import IconNav from "./base/IconNav";
 import vSpike from "./base/Spike";
 import Ad from "./base/Ad";
-import { NoticeBar } from "vant";
+import Popular from "./base/Popular"
 export default {
   name: "home",
   components: {
-    [NoticeBar.name]: NoticeBar,
     FooterBar,
     NavBar,
     vSwiper,
     IconNav,
     vSpike,
     Ad,
-    LikeGoods
+    LikeGoods,
+    Popular
   },
   data() {
     return {

@@ -63,12 +63,12 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .icons-nav {
     position: relative;
   .indicator{
       position: absolute;
-      bottom: 7px;
+      bottom: 5px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -88,7 +88,7 @@ export default {
     background-color: #fff;
   }
   .van-grid-item__content {
-    padding: 0;
+    padding: 5px;
     .iconimg {
       width: 36px;
       height: 36px;

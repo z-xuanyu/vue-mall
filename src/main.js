@@ -37,6 +37,7 @@ import {
   Checkbox,
   Panel,
   PasswordInput,
+  Progress,
   NumberKeyboard,
   Swipe,
   SwipeItem,
@@ -47,6 +48,7 @@ import {
   CellGroup,
   CouponCell,
   CouponList,
+  CountDown,
   Popup,
   PullRefresh,
   SubmitBar,
@@ -73,11 +75,13 @@ Vue.use(Lazyload)
   .use(PasswordInput)
   .use(NumberKeyboard)
   .use(PullRefresh)
+  .use(Progress)
   .use(CouponCell)
   .use(Card)
   .use(Cell)
   .use(CellGroup)
   .use(Checkbox)
+  .use(CountDown)
   .use(Grid)
   .use(GridItem)
   .use(GoodsAction)
