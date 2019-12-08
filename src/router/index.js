@@ -6,6 +6,7 @@ const error = ()=> import("../views/404/404.vue")
 const Home = ()=> import("../views/Home/Home.vue")  //首页
 const News = ()=> import("../views/News/News.vue")  //信息页面
 const Category = ()=> import("../views/Category/Category.vue")  //分类页面
+const Find =()=> import("../views/Find/Find.vue")
 const Search = ()=> import("../views/Search/Search.vue")  //搜索页面
 const Cart = ()=> import("../views/Cart/Cart.vue")    //购物车
 const SubmitOrder = ()=> import("../views/Cart/base/SubmitOrder.vue") //购物车提交订单
@@ -34,6 +35,11 @@ const routes = [
     path: "/category",
     name: "category",
     component: Category
+  },
+  {
+    path:"/find",
+    name:"find",
+    component:Find
   },
   {
     path: "/search",
