@@ -1,9 +1,11 @@
 <template>
     <div class="find">
         <!-- 顶部导航 -->
-        <van-nav-bar title="发现" />
+        <van-sticky>
+             <van-nav-bar title="发现" />
+        </van-sticky>
         <!-- 选项卡 -->
-        <van-tabs v-model="active" title-active-color="#ee0a24" :swipe-threshold="6">
+        <van-tabs sticky :offset-top="46" v-model="active" title-active-color="#ee0a24" :swipe-threshold="6">
             <van-tab title="全部">
 				<panel-card v-for="(item,index) in 6" :key="index"></panel-card>
 			</van-tab>

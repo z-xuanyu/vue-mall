@@ -18,6 +18,8 @@ import {
   Icon,
   Stepper,
   Search,
+  Step,
+  Steps,
   Row,
   Radio,
   RadioGroup,
@@ -35,6 +37,7 @@ import {
   ContactList,
   ContactEdit,
   Checkbox,
+  CheckboxGroup,
   Panel,
   PasswordInput,
   Progress,
@@ -82,6 +85,7 @@ Vue.use(Lazyload)
   .use(CellGroup)
   .use(Checkbox)
   .use(CountDown)
+  .use(CheckboxGroup)
   .use(Grid)
   .use(GridItem)
   .use(GoodsAction)
@@ -92,6 +96,8 @@ Vue.use(Lazyload)
   .use(SubmitBar)
   .use(SwipeCell)
   .use(Sku)
+  .use(Step)
+  .use(Steps)
   .use(SwitchCell)
   .use(ContactList)
   .use(ContactEdit)

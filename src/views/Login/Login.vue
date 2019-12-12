@@ -116,7 +116,7 @@ export default {
             setTimeout(() => {
                 this.isLoading = false;
                 if (this.userName && this.password) {
-                    this.$Cookies.set("TOKEN", this.userName);
+                    this.$Cookies.set("TOKEN", this.userName,{ expires: 7 });
                     localStorage.setItem("isLogin", true);
                     this.$router.push("/");
                     this.$notify({ type: "success", message: "登录成功" });
