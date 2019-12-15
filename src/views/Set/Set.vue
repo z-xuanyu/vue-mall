@@ -68,6 +68,8 @@ export default {
       })
         .then(() => {
           this.$toast("退出成功");
+          localStorage.removeItem("isLogin")
+          this.$Cookies.remove('TOKEN')
           this.$router.push("/login")
         })
         .catch(() => {

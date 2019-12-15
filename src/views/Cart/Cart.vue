@@ -19,7 +19,7 @@
         <!-- 有商品订单时显示 -->
         <div class="has-goods-order" v-else>
             <!-- 购物商品订单列表 -->
-            <div class="card-goods-list" v-for="(item) in cartInfoList" :key="item.id">
+            <div class="card-goods-list" v-for="(item,shopIdex) in cartInfoList" :key="item.id">
                 <!-- 购物车店铺信息 -->
                 <div class="van-hairline--bottom store">
                     <van-row>
@@ -42,7 +42,7 @@
                             <!-- 商品订单复选框 -->
                             <van-col span="3" class="d-flex-c">
                                 <van-checkbox
-                                    v-model="item.isSelected"
+                                    v-model="pros.isSelected"
                                     @click="selectSingle(item,pros)"
                                 ></van-checkbox>
                             </van-col>
@@ -78,7 +78,7 @@
                     <template slot="right">
                         <van-button @click="handleCollection" square color="#f6da63" text="收藏" />
                         <van-button @click="handleLookSimilar" square color="#eb8242" text="看相似" />
-                        <van-button @click="handleDelete(index)" square color="#da2d2d" text="删除" />
+                        <van-button @click="handleDelete(index,shopIdex)" square color="#da2d2d" text="删除" />
                     </template>
                 </van-swipe-cell>
             </div>
@@ -174,7 +174,6 @@ export default {
         };
     },
     created() {
-        console.log(this.cartInfoList);
         const TOKEN = this.$Cookies.get("TOKEN");
         TOKEN ? (this.hisGoodsOrder = true) : (this.tipsTxt = "去登录");
     },
@@ -200,23 +199,23 @@ export default {
             this.$toast.success("收藏成功");
         },
         //删除商品订单
-        handleDelete(index) {
+        handleDelete(index,shopIdex) {
             this.$dialog
                 .confirm({
                     message: "你确定要删除该商品订单吗？"
                 })
                 .then(() => {
-                    this.cartInfoList[index].productList.splice(index, 1);
+                    this.cartInfoList[shopIdex].productList.splice(index, 1);
                     // 如果没有对应的店铺信息，删除该项的店铺标题
-                    if (!this.cartInfoList[index].productList.length) {
-                        this.cartInfoList.splice(index, 1);
+                    if (!this.cartInfoList[shopIdex].productList.length) {
+                        this.cartInfoList.splice(shopIdex, 1);
                     }
                 })
                 .catch(() => {
                     // on cancel
                 });
         },
-        //删除全部订单
+        //清空全部订单
         onClearOrder() {
             this.$dialog
                 .confirm({
@@ -242,13 +241,23 @@ export default {
             console.log(item)
         },
         // 全选
-        handleAllChecked(){
-
+        handleAllChecked(e){
+            console.log(e)
         },
+        // 商品单选
         selectSingle(item,pros){
+            
             console.log(item,pros)
         }
-    }
+    },
+    watch: {
+        cartInfoList(newValue) {
+            const isLogin = localStorage.getItem("isLogin")
+            if(!newValue.length && isLogin ){
+                this.tipsTxt = "去逛逛看"
+            }
+        }
+    },
 };
 </script>
 <style lang="scss" scoped>
