@@ -257,9 +257,7 @@ export default {
             });
         },
         // 全选
-        handleAllChecked(e) {
-            console.log(e);
-        },
+        handleAllChecked() {},
         // 商品单选
         selectSingle(item, pros) {
             !pros.isSelected

@@ -63,7 +63,7 @@ export default {
                         "https://img30.360buyimg.com/mobilecms/s280x280_jfs/t1/114278/9/424/102046/5e8c86f6E93665a3f/1eae43511127041d.jpg",
                     marketPrice: "333.88",
                     maxGroupPrice: "99.00",
-                    percentage: "78",
+                    percentage: 78,
                     desc: "已抢购477件"
                 },
                 {
@@ -74,7 +74,7 @@ export default {
                         "http://t00img.yangkeduo.com/goods/images/2018-09-09/cf5d55c606d95f18ecc0b3e73c0a9498.jpeg",
                     marketPrice: "198.00",
                     maxGroupPrice: "59.00",
-                    percentage: "85",
+                    percentage: 85,
                     desc: "已抢购675件"
                 },
                 {
@@ -85,7 +85,7 @@ export default {
                         "https://img12.360buyimg.com/mobilecms/s280x280_jfs/t1/87217/3/19558/187556/5e9ec525E5d441b6f/5b46bfa39113faa2.jpg.webp",
                     marketPrice: "896.00",
                     maxGroupPrice: "499.00",
-                    percentage: "38",
+                    percentage: 38,
                     desc: "已抢购149件"
                 }
             ]
