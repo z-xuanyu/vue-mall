@@ -15,7 +15,13 @@
                 v-model="userName"
                 placeholder="请输入用户名"
             />
-            <van-field type="password" clearable v-model="password" placeholder="请输入密码" />
+            <van-field
+                type="password"
+                clearable
+                v-model="password"
+                @keyup.enter="onLogin"
+                placeholder="请输入密码"
+            />
         </div>
         <!-- 手机号验证码方式登录 -->
         <div class="user-form" v-else>
@@ -69,7 +75,10 @@
         </div>
         <div class="protocol">
             <span>注册即代表您同意</span>
-            <span class="user-protocol">&lt;&lt;<a href="#">商城用户协议</a>&gt;&gt;</span>
+            <span class="user-protocol">
+                &lt;&lt;
+                <a href="#">商城用户协议</a>&gt;&gt;
+            </span>
         </div>
         <!-- 退出登录页面 -->
         <div class="cross-login" @click="handleBack">
@@ -99,8 +108,7 @@ export default {
         TispLoginWay() {
             this.$dialog
                 .alert({
-                    message:
-                        "提示：请用任意的用户和密码进行登录!"
+                    message: "提示：请用任意的用户和密码进行登录!"
                 })
                 .then(() => {
                     // on close
@@ -116,7 +124,7 @@ export default {
             setTimeout(() => {
                 this.isLoading = false;
                 if (this.userName && this.password) {
-                    this.$Cookies.set("TOKEN", this.userName,{ expires: 7 });
+                    this.$Cookies.set("TOKEN", this.userName, { expires: 7 });
                     localStorage.setItem("isLogin", true);
                     this.$router.push("/");
                     this.$notify({ type: "success", message: "登录成功" });
@@ -126,8 +134,8 @@ export default {
         // 切换手机号登录
         onPhoneLogin() {
             this.isPhoneLogin = !this.isPhoneLogin;
-            if(this.isPhoneLogin){
-                this.$toast('手机登录接口功能未开发');
+            if (this.isPhoneLogin) {
+                this.$toast("手机登录接口功能未开发");
             }
         },
         //验证码倒计时
@@ -148,8 +156,8 @@ export default {
             }, 1000);
         },
         // 提示框
-        onClick(){
-            this.$toast('功能未开发');
+        onClick() {
+            this.$toast("功能未开发");
         }
     },
     computed: {
@@ -251,8 +259,8 @@ export default {
     .protocol {
         text-align: center;
         color: #fff;
-        a{
-            color:blue;
+        a {
+            color: blue;
         }
     }
 }
