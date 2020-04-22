@@ -20,7 +20,7 @@
     </van-row>
     <!-- 秒杀商品 -->
     <van-row class="spike-goods" type="flex" justify="space-between">
-      <van-col class="spike-goods-item" v-for="(item,index) in 10" :key="index">
+      <van-col class="spike-goods-item" @click="goDetail" v-for="(item,index) in 10" :key="index">
         <van-image
           width="3rem"
           fit="contain"
@@ -43,6 +43,11 @@ export default {
     return {
       time: 30 * 60 * 60 * 1000
     };
+  },
+  methods:{
+    goDetail(){
+       this.$router.push('/detail?goods_id=52157500821')
+    }
   }
 };
 </script>

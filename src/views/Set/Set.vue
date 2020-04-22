@@ -1,6 +1,10 @@
 <template>
   <div class="set">
-    <van-nav-bar class="cart-navbar" title="设置" left-arrow border sticky @click-left="onClickLeft"></van-nav-bar>
+    <van-nav-bar class="cart-navbar" title="设置" left-arrow border sticky @click-left="onClickLeft">
+      <template slot="left">
+          <van-icon name="arrow-left" size=".48rem" color="#000" />
+      </template>
+    </van-nav-bar>
     <!-- 功能列表 -->
     <div class="list">
       <van-cell size="large" is-link v-for="(item,index) in listData" :key="index">

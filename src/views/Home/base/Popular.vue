@@ -13,7 +13,7 @@
     </van-row>
     <!-- 热门商品 -->
     <div class="hot-goods">
-      <van-row v-for="(item,index) in 3" :key="index" class="hot-goods-item m-b-10 bg-white">
+      <van-row v-for="(item,index) in 3" :key="index" @click="goDetail" class="hot-goods-item m-b-10 bg-white">
         <van-col :span="8">
           <van-image
             lazy-load
@@ -45,7 +45,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    goDetail(){
+      this.$router.push('/detail?goods_id=52157500821')
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

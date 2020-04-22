@@ -51,25 +51,25 @@
             >登录</van-button>
         </div>
         <div class="login-tips">
-            <span @click="onPhoneLogin">手机号登录</span>
+            <span @click="onPhoneLogin">{{isPhoneLogin?'手机号登录':'用户名登录'}}</span>
             <span>忘记密码</span>
         </div>
         <!-- 第三方登录 -->
         <van-divider>第三方登录</van-divider>
         <div class="otherlogin">
-            <div class="weibo">
+            <div class="weibo" @click="onClick">
                 <van-icon size="20px" color="#fff" class-prefix="iconfont icon-xinlangweibo"></van-icon>
             </div>
-            <div class="weixin">
+            <div class="weixin" @click="onClick">
                 <van-icon size="20px" color="#fff" class-prefix="iconfont icon-weixin"></van-icon>
             </div>
-            <div class="qq">
+            <div class="qq" @click="onClick">
                 <van-icon size="20px" color="#fff" class-prefix="iconfont icon-icon"></van-icon>
             </div>
         </div>
         <div class="protocol">
             <span>注册即代表您同意</span>
-            <span class="user-protocol">&lt;&lt;XXX商城用户协议&gt;&gt;</span>
+            <span class="user-protocol">&lt;&lt;<a href="#">商城用户协议</a>&gt;&gt;</span>
         </div>
         <!-- 退出登录页面 -->
         <div class="cross-login" @click="handleBack">
@@ -100,7 +100,7 @@ export default {
             this.$dialog
                 .alert({
                     message:
-                        "提示：请用任意的用户和密码进行登录，轩钰QQ/微信：969718197"
+                        "提示：请用任意的用户和密码进行登录!"
                 })
                 .then(() => {
                     // on close
@@ -126,6 +126,9 @@ export default {
         // 切换手机号登录
         onPhoneLogin() {
             this.isPhoneLogin = !this.isPhoneLogin;
+            if(this.isPhoneLogin){
+                this.$toast('手机登录接口功能未开发');
+            }
         },
         //验证码倒计时
         VerifyCodeCountdown() {
@@ -143,6 +146,10 @@ export default {
                     time--;
                 }
             }, 1000);
+        },
+        // 提示框
+        onClick(){
+            this.$toast('功能未开发');
         }
     },
     computed: {
@@ -244,6 +251,9 @@ export default {
     .protocol {
         text-align: center;
         color: #fff;
+        a{
+            color:blue;
+        }
     }
 }
 </style>

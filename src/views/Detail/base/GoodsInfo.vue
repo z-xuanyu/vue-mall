@@ -41,13 +41,13 @@ export default {
   props:{
     // 商品原价
     marketPrice:{
-      type:String,
-      default:"999"
+      type:Number,
+      default:999
     },
     // 商品现价
     maxGroupPrice:{
-      type:String,
-      default:"88"
+      type:Number,
+      default:88
     },
     // 商品标题
     goodsDesc:{

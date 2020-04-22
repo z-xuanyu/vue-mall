@@ -1,7 +1,7 @@
 <template>
   <div class="icons-nav">
     <van-swipe :loop="false" @change=change>
-      <van-swipe-item v-for="(icons,index) in iconData" :key="index">
+      <van-swipe-item @click="onClick" v-for="(icons,index) in iconData" :key="index">
         <van-grid :border="false" :column-num="5">
           <van-grid-item v-for="(item,index) in icons" :key="index">
             <van-image class="iconimg" :src="item.iconUrl" />
@@ -45,6 +45,9 @@ export default {
     },
     change(index){
         this.indicatorActive = index
+    },
+    onClick(){
+      this.$toast('功能未开发')
     }
   },
   computed: {

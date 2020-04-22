@@ -75,14 +75,13 @@ export default {
       banner: [], //轮播图
       detailImg: [], //详情内容图片
       goodsDesc: "", //商品的信息
-      marketPrice: "", //商品原价
-      maxGroupPrice: "", //商品现价
+      marketPrice: null, //商品原价
+      maxGroupPrice: null, //商品现价
     };
   },
   created() {
     // 请求获取数据 
     this.getDetailData();
-    console.log(this.goodsDese)
   },
   mounted() {
     window.addEventListener("scroll", this.scroll);
@@ -139,7 +138,6 @@ export default {
         this.goodsDesc = data.item.goodsDesc; // 商品的标题
         this.marketPrice = data.item.marketPrice  //商品原价
         this.maxGroupPrice = data.item.maxGroupPrice  //商品现价
-        console.log(data)
       });
     }
   }

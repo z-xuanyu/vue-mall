@@ -2,7 +2,11 @@
   <div class="submit-order">
     <!-- 顶部导航 -->
     <van-sticky>
-      <van-nav-bar title="提交订单" left-arrow @click-left="onClickLeft" />
+      <van-nav-bar title="提交订单" left-arrow @click-left="onClickLeft">
+        <template slot="left">
+            <van-icon name="arrow-left" size=".48rem" color="#000" />
+        </template>
+      </van-nav-bar>
     </van-sticky>
     <!-- 收货地址 -->
     <van-contact-card @click="onContactCard" :type="type" :name="editAddressInfo.name" :tel="editAddressInfo.tel" :add-text="editAddressInfo.address" />
@@ -45,7 +49,7 @@
       />
     </van-cell-group>
     <!-- 确认支付 -->
-    <van-submit-bar safe-area-inset-bottom :price="3050" button-text="提交订单" @submit="onSubmitPay" />
+    <van-submit-bar safe-area-inset-bottom :price="3050" :loading='loading' button-text="提交订单" @submit="onSubmitPay" />
   </div>
 </template>
 
@@ -60,6 +64,7 @@ export default {
     return {
       type:"edit",
       message: "", //下单留言信息
+      loading:false
     };
   },
   mounted(){
@@ -73,7 +78,11 @@ export default {
     },
     // 提交支付订单
     onSubmitPay(){
-      this.$router.push("/order-pay")
+      const TOKEN = this.$Cookies.get("TOKEN");
+      this.loading = true
+      setTimeout(()=>{
+        TOKEN?this.$router.push("/order-pay"):this.$router.push("/login")
+      },1000)
     },
     // 点击联系人卡片
     onContactCard(){

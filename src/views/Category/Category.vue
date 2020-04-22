@@ -45,6 +45,7 @@ export default {
     return {
       Searchvalue: "",
       activeKey: 0,
+      contentActive:0,
       menu: [
         { name: "推荐分类", id: "1" },
         { name: "进口超市", id: "2" },

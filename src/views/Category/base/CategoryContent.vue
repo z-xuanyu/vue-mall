@@ -17,10 +17,12 @@
       </van-swipe>
     </div>
     <!-- grid card -->
-    <GridCart :Data="HotData" title="热门推荐" />
-    <GridCart :Data="NurseData" title="个人护理保健" />
-    <GridCart :Data="HotData" title="大家电" />
-    <GridCart :Data="NurseData" title="中式厨电" />
+    <div class="content-item">
+      <GridCart :Data="HotData" title="热门推荐" />
+      <GridCart :Data="NurseData" title="个人护理保健" />
+      <GridCart :Data="HotData" title="大家电" />
+      <GridCart :Data="NurseData" title="中式厨电" />
+    </div>
   </div>
 </template>
 
@@ -74,7 +76,7 @@ export default {
           title: "电动牙刷",
           iconUrl:
             "http://t00img.yangkeduo.com/goods/images/2019-09-29/a918d893-6af3-4f6f-96ef-40e620548b33.jpg?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp"
-        }, 
+        },
         {
           title: "电吹风",
           iconUrl:
@@ -124,7 +126,7 @@ export default {
           title: "卷发棒",
           iconUrl:
             "http://t00img.yangkeduo.com/goods/images/2019-10-25/c04048fe-37a0-44c7-98ec-e1f6fef87103.jpg?imageMogr2/sharpen/1%7CimageView2/2/w/1300/q/70/format/webp"
-        }, 
+        }
       ]
     };
   }

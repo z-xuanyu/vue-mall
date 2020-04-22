@@ -3,7 +3,7 @@
     <van-row type="flex" justify="space-between" align="center" class="user-info-wrapper">
       <van-col class="user-info">
         <div class="user-avatar m-r-10">
-          <img src="http://mall.zhouxuanyu.com/img/face.ed82672d.jpg" />
+          <img src="../../../assets/images/avatar.jpg" />
         </div>
         <div class="user-name">
           <div class="name">你好,{{$Cookies.get("TOKEN")}}</div>
@@ -18,7 +18,7 @@
     <div class="member-wrapper">
       <div class="member">
         <div class="member-left">
-          <img src="http://mall.zhouxuanyu.com/img/VIP.21027191.png" />
+          <img src="../../../assets/images/VIP.png" />
           <span>开通VIP会员</span>
         </div>
         <div class="member-right">会员特权</div>
